@@ -45,7 +45,7 @@ namespace OTP.Services.Repository
          * Check if the user exists
          * Condition: user hasn't logged in yet 
          */
-        public static bool UserExists(int userId)
+        public static bool CheckUserById(int userId)
         {
             bool exists = UsersMock.Any(u => u.UserId == userId && !u.HasLogged);
 

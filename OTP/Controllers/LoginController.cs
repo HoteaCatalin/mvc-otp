@@ -29,7 +29,7 @@ namespace OTP.Controllers
                 return View("UserLogin", new UserModel { UserId = userId });
             }
 
-            bool userExists = DataService.UserExists(userId);
+            var userExists = DataService.CheckUserById(userId);
 
             if (userExists)
             {
@@ -39,7 +39,7 @@ namespace OTP.Controllers
 
             if (int.TryParse(EncryptionService.GetPassword(userId.ToString()), out int otp)) // if password generation is successful
             {
-                UserModel userModel = new UserModel
+                var userModel = new UserModel
                 {
                     UserId = userId,
                     Password = otp.ToString(),
@@ -67,9 +67,8 @@ namespace OTP.Controllers
         [HttpPost]
         public ActionResult Login(int userId, string password)
         {
-            DateTime date = DateTime.UtcNow;
-
-            UserModel userModel = DataService.GetUser(userId);
+            var date = DateTime.UtcNow;
+            var userModel = DataService.GetUser(userId);
 
             if (password == userModel.Password && userId == userModel.UserId)
             {

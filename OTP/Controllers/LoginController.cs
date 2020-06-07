@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OTP.Helper;
 using OTP.Models;
-using OTP.Services.Repository;
+using OTP.Services.DataAccess;
 using OTP.Services.Security;
 using System;
 

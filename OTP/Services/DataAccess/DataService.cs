@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OTP.Services.Repository
+namespace OTP.Services.DataAccess
 {
     /*
      * This is a mock data service that simulates the behiavour of an real repository with a database

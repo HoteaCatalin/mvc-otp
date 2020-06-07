@@ -1,0 +1,36 @@
+﻿@model UserModel
+@{
+    ViewData["Title"] = "Generate password";
+}
+
+<h2>Generate password</h2>
+
+
+@using (Html.BeginForm("GetUserOTP", "Login", FormMethod.Post))
+{
+    <fieldset>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table>
+            <tr>
+                <td>@Html.LabelFor(a => a.UserId)</td>
+                <td>@Html.TextBoxFor(a => a.UserId)</td>
+                <td>@Html.ValidationMessageFor(a => a.UserId)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Generate password" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+}  

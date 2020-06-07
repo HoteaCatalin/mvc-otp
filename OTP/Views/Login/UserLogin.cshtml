@@ -1,0 +1,43 @@
+﻿@model UserModel
+@{
+    ViewData["Title"] = "UserLogin";
+}
+
+<h2>Hello @Model.UserId . @ViewData["Status"]</h2>
+
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    <fieldset>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table>
+            <tr>
+                <td>@Html.LabelFor(a => a.UserId)</td>
+                <td>@Html.TextBoxFor(a => a.UserId)</td>
+                <td>@Html.ValidationMessageFor(a => a.UserId)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(a => a.Password)</td>
+                <td>@Html.TextBoxFor(a => a.Password)</td>
+                <td>@Html.ValidationMessageFor(a => a.Password)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Login" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+}
+
+@Html.ActionLink("Generate new password", "Index", "Login")
